@@ -1,0 +1,38 @@
+{% extends 'SitioWeb/Base/base.html'%}
+{% load static %}
+
+{% block nav %}
+    {% include '../Base/nav.html' %}
+{% endblock %}
+
+{% block content %}
+    <section class="main-login d-flex align-items-center justify-content-center mt-5">
+        <div class="container container-login d-flex justify-content-center h-auto col-lx-7 col-lg-7 col-md-12 col-sm-12">
+            <div class="p-5 col-lx-6 col-lg-8 col-md-12 col-sm-12">
+                <div class="">
+                    <h2 class="h1">Registrate Ya!</h2>
+                    {% include '../Mensajes/messages_login.html' %}
+                    <form class="p-3 d-flex flex-column gap-3" method="post">
+                        {% csrf_token %}           
+                        {% for field in form %}
+                            <div class="form-group">
+                                {{ field.label_tag }}
+                                {{ field }}
+
+                                {% if field.errors %}
+                                    <div class="alert alert-danger p-0 m-0 d-flex text-align-center align-items-center">
+                                        {{ field.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                        <button class="btn btn-primary" type="submit">Registrar</button>
+                    </form>
+                    
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,8 @@
+
+<form class="form width-form" action="{% url 'products:search' %}">
+  <div class="input-group" data-bs-theme="light">
+    <input class="form-control" placeholder="¿Qué estas buscando?" required="" type="text" name="q" value="{{ query }}">
+    <input type="submit" name="" value="Buscar" class="btn btn-secondary">
+  </div>
+</form>
+

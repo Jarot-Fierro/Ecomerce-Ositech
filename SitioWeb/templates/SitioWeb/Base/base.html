@@ -1,0 +1,42 @@
+{% url 'index' as index %}
+{% url 'carts:cart' as cart %}
+{% url 'shipping_addresses:shipping_addresses' as shipping_addresses %}
+{% url 'orders:completeds' as completeds %}
+{% url 'billing_profiles:create' as billing_profiles %}
+{% url 'login' as login  %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'SitioWeb/Styles/Boostrap_local/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'SitioWeb/Styles/Style_local/style.css' %}">
+    <script defer src="{% static 'SitioWeb/Scripts/Boostrap_local/js/bootstrap.bundle.min.js' %}"></script>
+    <script defer src="{% static 'SitioWeb/Scripts/Script_local/script.js' %}"></script>
+    
+    <title>Web</title>
+</head>
+<body>
+      {% include 'SitioWeb/Nav/nav.html' %}
+    <main>
+      {% if request.path != login %}
+        <div class="success-position" id="container-alert-messages">
+          {% include '../Mensajes/messages_login.html' %}
+        </div>
+      {% endif %}
+      
+      {% block breadcrumb %}
+      {% endblock %}
+
+      {% block content %}
+      {% endblock %}
+    </main>
+    <footer>
+      {% include 'SitioWeb/Footer/footer.html' %}
+    </footer>
+</body>
+{% block javascript %}
+{% endblock %}
+</html>

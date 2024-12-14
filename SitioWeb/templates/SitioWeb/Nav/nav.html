@@ -1,0 +1,81 @@
+{% load static %}
+{% url 'login' as login  %}
+{% url 'register' as register %}
+{% url 'logout' as logout %}
+
+<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a href="#">
+            <img class="icon-logo" style="width: 70px;" src="{% static 'SitioWeb/Media/Logo-removebg-preview.png' %}" alt="">
+        </a>
+        <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" style="color: aliceblue;"></span>
+        </button>
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link link-nav text-decoration-none d-flex align-items-center" href="{{ index }}">
+                            <img class="icon-nav mx-1 text-light" src="{% static 'SitioWeb/Media/house-solid.svg' %}" alt="" >
+                            <p class="text-light mb-0 ">Inicio</p>
+                        </a>
+                    </li> 
+                </ul>
+                {% if request.path != login and request.path != register %}
+                    <ul class="nav justify-content-center mx-auto">
+                        {% include 'Productos/snippets/search.html' %}
+                    </ul>
+                    <ul class="nav navbar-nav ml-auto">
+                        {% if user.is_authenticated %}   
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle link-nav text-decoration-none d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img class="icon-nav mx-1 text-light" src="{% static 'SitioWeb/Media/circle-user-solid.svg' %}" alt="" >
+                                    <p class="text-light mb-0 ">Mi Perfil</p>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    {% block nav %}
+                                        {% include '../Nav/nav_users.html' %}
+                                    {% endblock %}
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li class="nav-item {% if request.path == shipping_addresses %} active {% endif %}">
+                                        <a class="dropdown-item text-decoration-none d-flex align-items-center" href="{{ shipping_addresses }}">
+                                            <img class="icon-nav mx-1 text-light" src="{% static 'SitioWeb/Media/map-location-dot-solid.svg' %}" alt="" >
+                                            <p class="text-light mb-0 ">Mi Dirección</p>
+                                        </a>
+                                    </li>  
+
+                                    <li class="nav-item">
+                                        <a class="dropdown-item text-decoration-none d-flex align-items-center" href="{{ completeds }}">
+                                            <img class="icon-nav mx-1 text-light" src="{% static 'SitioWeb/Media/icon-shipping.svg' %}" alt="" >
+                                            <p class="text-light mb-0 ">Mis Pedidos</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        {% else %}       
+                            <li class="nav-item ">
+                                <a class="nav-link link-nav text-decoration-none d-flex align-items-center" href="{{ login }}">
+                                    <img class="icon-nav mx-1 text-light" src="{% static 'SitioWeb/Media/circle-user-solid.svg' %}" alt="" >
+                                    <p class="text-light mb-0 ">Inicia sesión o Registrate</p>
+                                </a>
+                            </li>
+                        
+                        {% endif %} 
+                        <div class="vr mx-3 text-light ocult-element-nav"></div>
+                        <ul class="nav navbar-nav ml-auto me-5">
+                            <li class="nav-item {% if request.path == cart %} active {% endif %}">
+                                <a class="nav-link link-nav text-decoration-none d-flex align-items-center" href="{{ cart }}">
+                                    <img class="icon-nav mx-1 text-light" src="{% static 'SitioWeb/Media/cart-shopping-solid.svg' %}" alt="" >
+                                    <p class="text-light mb-0 ">Mi Carrito</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+  </nav>
+
+
+

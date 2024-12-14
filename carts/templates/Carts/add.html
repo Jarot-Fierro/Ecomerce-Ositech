@@ -1,0 +1,39 @@
+{% extends 'SitioWeb/Base/base.html' %}
+{% load product_extras %}
+{% load cart_extras %}
+
+{% block nav %}
+    {% include '../SitioWeb/Base/nav.html' %}
+{% endblock %}
+
+{% block content %} 
+  <section class="container mt-5 d-flex justify-content-center">
+    <div class="col-lg-8 col-md-12 col-sm-12 m-5">
+      <div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-4">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="Imagen del Producto" width="200" height="200">
+            {% endif %}
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h4 class="card-title"> {{ quantity | quantity_add_format }} al carrito</h4>
+              <h5 class="card-title"> {{ product.title }} </h5>
+              <p class="card-text">{{ product.description }}</p>
+              <p class="card-text"><small class="text-body-secondary">Precio: {{ product.price | price_format }}</small></p>
+              <div class="row">
+                <div class="col">
+                    <a class="btn btn-warning" href="{% url 'index' %}">Seguir Comprando</a>
+                </div>
+                <div class="col">
+                    <a class="btn btn-success" href="{{ cart }}">Ir al Carrito</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>   
+  </section> 
+{% endblock %}

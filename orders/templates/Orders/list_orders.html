@@ -1,0 +1,16 @@
+{% extends 'SitioWeb/Base/base.html' %}
+
+
+{% block content %}
+    <section class="container mt-5">
+        <div class="col">
+            <div class="h3">Mis pedidos</div>
+        </div>
+        <div class="">
+            {% for order in object_list %}
+                {% include 'orders/snippets/list_orders.html' %}
+            {% endfor %}
+        </div>
+    </section>
+
+{% endblock %}

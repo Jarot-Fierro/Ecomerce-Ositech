@@ -1,0 +1,43 @@
+
+.main-login{
+    width: 100%;
+}
+.color-blue{
+    background-color: #0099ff;
+}
+.container-login{
+    height: 600px;
+    border-radius:45px;
+    box-shadow:  0 0 10px 2px rgb(156, 156, 156);
+    position: absolute;
+    top: 140px;
+    background-color: rgb(255, 255, 255);
+}
+.olas{
+    margin-top: 300px;
+    height: 565px;
+}
+.img-registrate{
+    width: 100%;
+    height: 500px;
+    transition: .3s;
+}
+.img-registrate:hover{
+    transform: scale(1.2);
+}
+
+@media (max-width:992px){
+
+    .container-login{
+        box-shadow: none;
+        background-color: transparent;
+    }
+    .img-registrate{
+        display: none;
+    }
+}
+@media (max-width:1500px){
+    .img-registrate{
+        height: 400px;
+    }
+}

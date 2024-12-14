@@ -1,0 +1,70 @@
+{% extends 'SitioWeb/Base/base.html' %}
+{% load product_extras %}
+
+{% block nav %}
+    {% include '../SitioWeb/Base/nav.html' %}
+{% endblock %}
+
+{% block content %}
+    <section class="container mt-5">
+        <h1>Carrito de Compra</h1>
+        {% if cart_all_products.products.exists %}
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="card col-xxl-8 col-xl-8 col-lg-12">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Precio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for cp in cart_all_products.products_related %}
+                                    {% with product=cp.product %}
+                                        <tr>
+                                            <th>{{ forloop.counter }}</th>
+                                            <th>
+                                                {% if product.image %}
+                                                    <img src="{{ product.image.url }}" alt="Imagen del Producto" width="60" height="60">
+                                                {% endif %}
+                                            </th>
+                                            <th>
+                                                <a class="text-decoration-none" href="{% url 'products:product' product.slug %}"> {{ product.title }}</a>
+                                                {% include 'Carts/snippets/remove_product_incart.html' %}
+                                            </th>
+                                            <th>{{ cp.quantity }}</th>
+                                            <th>
+                                                <span class="font-weight-bold text-danger">{{ product.price | price_format }}</span>
+                                            </th>
+                                        </tr>
+                                    {% endwith %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-xxl-4 col-xl-4 col-lg-12">
+                        <div class="card pt-3">
+                            <div class="card-body">
+                                <div class="fw-bold">
+                                    Subtotal ({{ cart_all_products.products.count }}) : <span class="text-danger">{{ cart_all_products.subtotal | price_format }}</span>
+                                </div>
+                                <div class="mt-5">
+                                    <a class="btn btn-warning" href="{% url 'orders:order' %}">Proceder al pago</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="col">
+                <p class="h3">Tu carrito de compras está vacío</p>
+                <a href="{% url 'index' %}">seguir comprando</a>
+            </div>
+        {% endif %}
+    </section>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'SitioWeb/Base/base.html' %}
+
+{% block breadcrumb %}
+    {% include 'Orders/snippets/breadcrumb.html' %}
+{% endblock %}
+
+{% block content %}
+    <section class="container mt-5">
+        <div class="col">
+            {% if shipping_address %}
+                <div class="h3">
+                    Recoge el pedido en el punto de entregas
+                </div>
+                <div class="">
+                    {% include 'shipping_addresses/snippets/shipping_addresses.html' %}
+                    <div class="mt-2">
+                        <a class="btn btn-warning" href="{% url 'orders:confirm' %}">Confirmar esta dirección</a>
+                    </div>
+                    {% if can_choose_address %}
+                        <div class="mt-2">
+                            <a href="{% url 'orders:select_address' %}">Elige otra una dirección</a>
+                        </div>
+                    {% endif %}
+                </div>
+            {% else %}
+                <div class="h3">
+                    Registra tu dirección de envio
+                </div>
+                <div class="">
+                    {% url 'orders:address' as next_url %}
+                    <a href="{% url 'shipping_addresses:create' %}?next={{ next_url }}">Nueva dirección de envio</a>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}

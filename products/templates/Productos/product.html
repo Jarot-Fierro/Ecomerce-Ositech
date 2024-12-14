@@ -1,0 +1,53 @@
+{% extends 'SitioWeb/Base/base.html'%}
+{% load static %}
+
+{% block content %}
+    <section class="container d-flex img-description-product pt-5 bg-light-subtle">
+        <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 d-flex justify-content-center m-1">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="Imagen del Producto" height="300">
+            {% endif %}
+        </div>
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
+            <div class="h1">
+                {{ product.title }}
+            </div>
+            <div class="h5 font-weight-bold">
+                Precio: <span class="text-danger"> ${{ product.price }} </span>
+            </div>
+            <div class="">
+                <p class="h5">Descripción:</p>
+                <p> {{ product.description }} </p>
+            </div>
+            <div class="mt-5">
+                {% include 'carts/snippets/add_product_incart.html' %}
+            </div>
+        </div>
+    </section> 
+    <section class="container">
+        <table class="table table-striped mt-5">
+            <tbody>
+                <tr>
+                    <td class="col-6">Marca:</td>
+                    <td class="col-6">{{ product.brand }}</td>
+                </tr>
+                <tr>
+                    <td class="col-6">Material:</td>
+                    <td class="col-6">{{ product.material }}</td>
+                </tr>
+                <tr>
+                    <td class="col-6">Género:</td>
+                    <td class="col-6">{{ product.gender }}</td>
+                </tr>
+                <tr>
+                    <td class="col-6">Modelo:</td>
+                    <td class="col-6">{{ product.clothing_model }}</td>
+                </tr>
+                <tr>
+                    <td class="col-6">Ciudad de Origen:</td>
+                    <td class="col-6">{{ product.country_origin }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+{% endblock %}

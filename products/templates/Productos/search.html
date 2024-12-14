@@ -1,0 +1,13 @@
+{% extends '../SitioWeb/Base/base.html' %}
+{% block nav %}
+    {% include '../Sitioweb/Base/nav.html' %}
+{% endblock %}
+
+{% block content %}
+    <section class="container p-5">
+        <p>Resultados para: {{ query }} ({{ count }})</p>
+        <hr>
+        {% include 'Productos/snippets/list_product.html'%}
+    </section>
+    
+{% endblock %}

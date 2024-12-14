@@ -1,0 +1,110 @@
+{% extends 'SitioWeb/Base/base.html' %}
+
+
+{% block breadcrumb %}
+    {% include 'Orders/snippets/breadcrumb.html' %}
+{% endblock %}
+
+
+{% block content %}
+    <section class="container mt-5">
+        <div class="row">
+            <div class="col-xxl-8 col-xl-8 col-lg-8">
+                <div class="h3">Confirma tu pedido</div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="fw-bold">
+                                    Dirección de envio
+                                </div>
+                                <div class="card-text">
+                                    {{ shipping_address.address }}
+                                </div>
+                                <div class="card-text">
+                                    {{ shipping_address.line1 }}
+                                </div>
+                                <div class="card-text">
+                                    {{ shipping_address.reference }}
+                                </div>
+                                <div class="card-text">
+                                    {{ shipping_address.postal_code }}
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="fw-bold">
+                                    Metodo de pago
+                                </div>
+                                <div class="card-text">Tarjeta terminación 4242</div>
+                            </div>
+                            <div class="col-4">
+                                <div class="fw-bold">Código Promocional</div>
+                                <form id="promocode-form" action="{% url 'promo_codes:validate' %}" class="mt-1">
+                                    <input type="text" name="code" value="{{ order.promo_code.code }}" class="form-control" placeholder="Código de promoción" {% if order.promo_code %}readonly{% endif %}>
+                                </form>
+                                <div class="text-success" id="promocode-success" style="font-size: 14px;">
+                                    {% if order.promo_code %}
+                                        Código Aplicado exitosamente
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <div class="card">
+                        <div class="card-body">
+                            {% for product in cart_cart.products.all %}
+                                {% include 'orders/snippets/product.html' %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4">
+                {% url 'payment:process' as next_url %}
+                {% include 'orders/snippets/resume.html' with next_url=next_url %}
+                <div class="mt-3">
+                    <a class="btn btn-danger" href="{% url 'payment:canceled' %}">Cancelar order</a>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        const form = document.getElementById('promocode-form')
+
+        form.addEventListener('submit',function(e){
+            e.preventDefault()
+            
+            const input = this.code
+            const code = input.value
+            const url = this.action + "?code=" + code
+            const div_total = document.getElementById('order-total')
+            const div_success = document.getElementById('promocode-success')
+
+            fetch(url)
+                .then(response => response.json())
+                .then(response => {
+                    
+                    if(response.status === true){
+                        div_total.innerHTML = '$' + response.total
+                        div_success.classList.remove('text-danger')
+                        div_success.classList.add('text-success')
+                        div_success.innerHTML = 'Código Aplicado exitosamente'
+
+                        input.readOnly = true
+                    }else{
+                        div_success.innerHTML = 'Código no valido'
+                        div_success.classList.remove('text-success')
+                        div_success.classList.add('text-danger')
+
+                    }
+                })
+        })
+    </script>
+
+{% endblock %}

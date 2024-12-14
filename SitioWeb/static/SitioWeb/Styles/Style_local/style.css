@@ -1,0 +1,143 @@
+body{
+    background-color: #f7f7f7;
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+    width: 100%;
+    height: 100%;
+    /* Add your background pattern here */
+    background-color: #ffffff;
+    background-image: radial-gradient(rgba(163, 163, 163, 0.171) 2px, transparent 0);
+    background-size: 30px 30px;
+    background-position: -5px -5px;
+}
+
+.display-flex{
+    display:flex
+}
+/* Navegador */
+.icon-logo{
+    transition: .3s;
+}
+.icon-logo:hover{
+    transform: rotateY(180deg);
+}
+.main-login{
+    width: 100%;
+}
+.color-blue{
+    background-color: #0099ff;
+}
+.container-login{
+    border-radius:45px;
+    box-shadow:  0 0 10px 2px rgb(156, 156, 156);
+    z-index: 2;
+    top: 140px;
+    background-color: #f7f7f7;
+}
+.img-registrate{
+    width: 100%;
+    height: 500px;
+    transition: .3s;
+}
+.img-registrate:hover{
+    transform: scale(1.2);
+}
+
+/* Cerrar Mensajes  */
+.container-alerts{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.close-menssages{
+    display: none !important;
+}
+.success-position{
+    width: 100%;
+    position: absolute;
+    top: 90px;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+/* Logout */
+.icon-nav{
+    color: #ffffff;
+    width: 20px;
+}
+.link-nav{
+    cursor: pointer;
+    transition: .3s;
+}
+.link-nav:hover{
+    transform: scale(1.15);
+}
+
+.margin_right{
+    margin-right: 50px;
+}
+.width-form{
+    width: 500px;
+}
+.banner-style{
+    margin: 0 200px;
+}
+.box-oferts{
+    transition: .3s;
+}
+.box-oferts:hover{
+    transform:rotateX(-15deg) rotateY(-10deg);
+}
+
+@media (max-width:991px){
+
+    .container-login{
+        box-shadow: none;
+        background-color: transparent;
+        margin-top: 0;
+    }
+    .contentR-login{
+        display: none;
+    }
+    .icon-nav{
+        display: none;
+    }
+    .flex-direcction{
+        flex-direction: column;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    .display-flex{
+        display: block;
+    }
+    .link-nav{
+        transition: none;
+        padding: 10px 0 10px 0;
+    }
+    .link-nav:hover{
+        transform: none;
+    }
+    /* Style Product */
+    .img-description-product{
+        flex-direction: column;
+    }
+    .width-form{
+        width: 100% !important;
+    }
+    .ocult-element-nav{
+        display: none;
+    }
+}
+@media (max-width:1500px){
+    .img-registrate{
+        height: 400px;
+    }
+    .width-form{
+        width: 400px;
+    }
+    .banner-style{
+        margin: 0;
+    }
+    
+}

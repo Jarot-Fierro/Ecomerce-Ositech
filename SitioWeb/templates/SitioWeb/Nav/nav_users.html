@@ -1,0 +1,12 @@
+{% load static %}
+{% url 'login' as login  %}
+{% url 'register' as register %}
+{% url 'logout' as logout %}
+{% block nav %}
+    {% if user.is_authenticated %}
+        <a class="dropdown-item text-decoration-none d-flex align-items-center" href="{{ logout }}">
+            <img class="icon-nav mx-1 text-light" src="{% static 'SitioWeb/Media/icon-logout.svg' %}" alt="" >
+            <p class="text-light mb-0 ">Logout</p>
+        </a>
+    {% endif %}   
+{% endblock %}

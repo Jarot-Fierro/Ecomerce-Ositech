@@ -1,0 +1,14 @@
+<section class="container mt-3">
+    <nav aria-label="breadcrumb ">
+        <ol class="breadcrumb bg-dark-subtle rounded p-3">
+            {% for item in breadcrumb %}
+                {% if item.active %}
+                    <li class="breadcrumb-item"><a class="text-decoration-none" href="{{ item.url }}">{{ item.title }}</a></li>
+
+                {% else %}
+                    <span class="breadcrumb-item active">{{ item.title }}</span>
+                {% endif %}
+            {% endfor %}
+        </ol>
+    </nav>
+</section>

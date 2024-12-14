@@ -1,0 +1,27 @@
+{% extends 'SitioWeb/Base/base.html' %}
+{% block breadcrumb %}
+    {% include 'Orders/snippets/breadcrumb.html' %}
+{% endblock %}
+{% block content %}
+    <section class="container mt-5">
+        <div class="row">
+            <div class="col-xxl-8 col-xl-8 col-lg-8">
+                <div class="h3">
+                    Revisa tu pedido
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        {% for product in cart_cart.products.all %}
+                            {% include 'Orders/snippets/product.html' %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4">
+                {% url 'orders:address' as next_url%}
+                {% include 'Orders/snippets/resume.html' with next_url=next_url %}
+            </div>
+        </div>
+    </section>
+    
+{% endblock %}

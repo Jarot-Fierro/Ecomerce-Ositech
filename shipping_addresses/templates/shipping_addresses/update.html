@@ -1,0 +1,15 @@
+{% extends 'SitioWeb/Base/base.html' %}
+
+
+{% block content %}
+    <section class="container mt-5">
+        <div class="col-5 mx-auto card p-5 shadow-lg">
+            <div class="h3">
+                Editar dirección
+            </div>
+            <div class="">
+                {% include 'shipping_addresses/snippets/form.html' with message='Actualizar'%}
+            </div>
+        </div>
+    </section>
+{% endblock %}

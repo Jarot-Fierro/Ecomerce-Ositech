@@ -1,0 +1,138 @@
+[
+{
+    "model": "products.product",
+    "pk": 1,
+    "fields": {
+        "title": "Polera para Hombre",
+        "description": "Polera para hombre",
+        "price": 15000,
+        "slug": "polera-para-hombre",
+        "image": "products/polera-negra_5e4eAXi.jpg",
+        "create_at": "2024-08-04T19:19:58.159Z",
+        "brand": "ZX",
+        "material": "Algodon",
+        "gender": "Hombre",
+        "country_origin": "China",
+        "clothing_model": "AS-KS"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 2,
+    "fields": {
+        "title": "Polera para Mujer",
+        "description": "Polera para mujer sin mangas",
+        "price": 20000,
+        "slug": "polera-para-mujer",
+        "image": "products/053202360_Polera-Mujer-Manga-Corta-Pique.png",
+        "create_at": "2024-08-04T21:27:52.914Z",
+        "brand": "Nike",
+        "material": "Algodon",
+        "gender": "Mujer",
+        "country_origin": "Chile",
+        "clothing_model": "LKS-4SA"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 3,
+    "fields": {
+        "title": "Laptop Gamer",
+        "description": "Laptop de alto rendimiento con tarjeta gráfica dedicada",
+        "price": 1200000,
+        "slug": "laptop-gamer",
+        "image": "products/Laptop-Asus-FX-505.png",
+        "create_at": "2024-08-13T03:46:35.429Z",
+        "brand": "Asus",
+        "material": "Aluminio",
+        "gender": "Unisex",
+        "country_origin": "China",
+        "clothing_model": "FX-505"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 4,
+    "fields": {
+        "title": "Mouse Inalámbrico",
+        "description": "Mouse ergonómico con conexión Bluetooth.",
+        "price": 25000,
+        "slug": "mouse-inalambrico",
+        "image": "products/Mouse-Inalambrico-Logitech-MX-Master.png",
+        "create_at": "2024-08-13T03:47:23.184Z",
+        "brand": "Logitech",
+        "material": "Plástico",
+        "gender": "Unisex",
+        "country_origin": "Estados Unidos",
+        "clothing_model": "MX-Master"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 5,
+    "fields": {
+        "title": "Teclado Mecánico RGB",
+        "description": "Teclado mecánico con iluminación RGB personalizable.",
+        "price": 75000,
+        "slug": "teclado-mecanico-rgb",
+        "image": "products/Teclado-mecanico-rgb-Razer-BlackWidow.png",
+        "create_at": "2024-08-13T03:48:05.714Z",
+        "brand": "Razer",
+        "material": "Plástico",
+        "gender": "Unisex",
+        "country_origin": "Estados Unidos",
+        "clothing_model": "BlackWidow"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 6,
+    "fields": {
+        "title": "Monitor 4K",
+        "description": "Monitor Ultra HD con resolución 4K y tecnología IPS.",
+        "price": 350000,
+        "slug": "monitor-4k",
+        "image": "products/Monitor4K-LG-27UL500.jpg",
+        "create_at": "2024-08-13T03:48:40.558Z",
+        "brand": "LG",
+        "material": "Plástico",
+        "gender": "Unisex",
+        "country_origin": "Corea del Sur",
+        "clothing_model": "27UL500"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 7,
+    "fields": {
+        "title": "Disco Duro Externo 1TB",
+        "description": "Disco duro externo portátil con capacidad de 1TB.",
+        "price": 60000,
+        "slug": "disco-duro-externo-1tb",
+        "image": "products/DiscoDuroExterno-1TB-Seagate-Expansion.jpg",
+        "create_at": "2024-08-13T03:49:19.280Z",
+        "brand": "Seagate",
+        "material": "Plástico",
+        "gender": "Unisex",
+        "country_origin": "Estados Unidos",
+        "clothing_model": "Expansion"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 8,
+    "fields": {
+        "title": "Memoria USB 64GB",
+        "description": "Memoria USB de alta velocidad con 64GB de capacidad.",
+        "price": 10000,
+        "slug": "memoria-usb-64gb",
+        "image": "products/USB64GB-SanDisk-Ultra-Flair.jpeg",
+        "create_at": "2024-08-13T03:49:56.914Z",
+        "brand": "SanDisk",
+        "material": "Plástico",
+        "gender": "Unisex",
+        "country_origin": "China",
+        "clothing_model": "Ultra Flair"
+    }
+}
+]

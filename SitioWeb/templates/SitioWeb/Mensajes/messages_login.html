@@ -1,0 +1,31 @@
+{% load static %}
+{% if messages %}
+    {% for message in messages %}
+        <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100">
+            <div class="toast d-block">
+                {% if message.tags == 'success' %}
+                    <div class="toast-header" >
+                        
+                        <img class="me-3" src="{% static 'SitioWeb/Media/circle-check-solid.svg' %}" alt=""  width="15px">
+                        <strong class="me-auto">Mensaje</strong>
+                        <small>Ahora</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" id="button-close"></button>
+                    </div>
+                    <div class="toast-body fw-bold bg-light">
+                        {{ message }}
+                    </div>
+                {% else %}
+                    <div class="toast-header"  >
+                        <img class="me-3" src="{% static 'SitioWeb/Media/triangle-exclamation-solid.svg' %}" alt="" width="15px">
+                        <strong class="me-auto">Mensaje</strong>
+                        <small>Ahora</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" id="button-close"></button>
+                    </div>
+                    <div class="toast-body fw-bold bg-light">
+                        {{ message }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}
